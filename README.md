@@ -1,13 +1,11 @@
 # ![nf-core/atacseq](docs/images/nf-core-atacseq_logo.png)
 
-[![GitHub Actions CI Status](https://github.com/nf-core/atacseq/workflows/nf-core%20CI/badge.svg)](https://github.com/nf-core/atacseq/actions)
-[![GitHub Actions Linting Status](https://github.com/nf-core/atacseq/workflows/nf-core%20linting/badge.svg)](https://github.com/nf-core/atacseq/actions)
-[![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A519.10.0-brightgreen.svg)](https://www.nextflow.io/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2634132.svg)](https://doi.org/10.5281/zenodo.2634132)
+## Notes
 
-[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/)
-[![Docker](https://img.shields.io/docker/automated/nfcore/atacseq.svg)](https://hub.docker.com/r/nfcore/atacseq)
-[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23atacseq-4A154B?logo=slack)](https://nfcore.slack.com/channels/atacseq)
+This nf-based atac-seq pipeline was originally built by nf-core team.
+And it was then adapted for axolotl genome.
+Many features were modified or discarded for the sake of simplicity instead of bing comprehensive.
+
 
 ## Introduction
 
