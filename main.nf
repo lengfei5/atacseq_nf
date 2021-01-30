@@ -21,8 +21,10 @@ log.info """\
          contamination: ${params.contamination}
          adapter: ${params.adapter}
          tss: ${params.tss}
-         cpus: ${params.nb_cpus}
-         memPerCPUSort: ${params.memPerCPUSort}
+
+         nb_cpus: ${params.cpus}
+         max_memory: ${params.max_memory}
+         max_time: ${params.max_time}
          """
          .stripIndent()
 
@@ -30,27 +32,6 @@ log.info """\
 /*
  * Input parameters validation
  */
-cont_file       = file(params.contamination)
-bc_file = file(params.barcodes)
-
-if (params.demultiplexWithsRBC)
-{
-  if (params.barcodes) {
-    if ( ! bc_file.exists() ) exit 1, "barcode file does not exist : ${bc_file}  "
-  } else {
-    exit 1, "barocde file missing"
-  }
-}
-
-
-// fix a bug found by Maria
-if (params.spikeIn)
-{
-  spikeIn_file = file(params.spikeIn)
-} else {
-  spikeIn_file = file("NA")
-}
-
 
 if (params.genome)
 {
@@ -60,31 +41,17 @@ if (params.genome)
   exit 1, "Missing genome file"
 }
 
-if (params.gtf)
+if (params.tss)
 {
-  gtf_file = file(params.gtf)
-  if( !gtf_file.exists() ) exit 1, "GTF file doesn't exist: ${gtf_file}"
+  tss_file = file(params.tss)
+  if( !tss_file.exists() ) exit 1, "tss file doesn't exist: ${tss_file}"
 } else {
-  gtf_file = file("NA")
-}
-
-if (params.gtfNoSplit)
-{
-  gtfNoSplit_file = file(params.gtfNoSplit)
-  if( !gtfNoSplit_file.exists() ) exit 1, "GTF (no split) file doesn't exist: ${gtfNoSplit_file}"
-} else {
-  gtfNoSplit_file = file("NA")
-}
-
-if (( ! params.gtf ) && ( ! params.gtfNoSplit ))
-{
-  exit 1, "Neither --gtf nor --gtfNoSplit set"
+  tss_file = file("NA")
 }
 
 /*
  * Validate input files
  */
-
 
 /*
  * Create a channel for read files
